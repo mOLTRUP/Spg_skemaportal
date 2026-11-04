@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0",
+  "source": "Egen dansk testskabelon baseret på generelle CSAT-principper fra SurveyMonkey og Qualtrics; ikke ordret kopi",
+  "template": {
+    "id": "itd-csat-kundetilfredshed-v1",
+    "name": "Kundetilfredshedsundersøgelse – funktionstest",
+    "owner": "ITD medarbejder",
+    "topics": [
+      {
+        "id": "csat-topic-1",
+        "name": "Samlet tilfredshed",
+        "level": 1,
+        "questions": [
+          {
+            "id": "csat-q-1-1",
+            "text": "Hvor tilfreds er du samlet set med vores virksomhed?",
+            "methodId": "csat-scale-5"
+          },
+          {
+            "id": "csat-q-1-2",
+            "text": "Hvad er den vigtigste årsag til din vurdering?",
+            "methodId": "csat-text"
+          }
+        ]
+      },
+      {
+        "id": "csat-topic-2",
+        "name": "Kontakt og service",
+        "level": 1,
+        "questions": [
+          {
+            "id": "csat-q-2-1",
+            "text": "Har du haft kontakt med vores medarbejdere inden for de seneste 3 måneder?",
+            "methodId": "csat-yesno"
+          },
+          {
+            "id": "csat-q-2-2",
+            "text": "Hvor tilfreds var du med den hjælp, du fik?",
+            "methodId": "csat-scale-5",
+            "condition": {
+              "sourceId": "csat-q-2-1",
+              "value": "Ja"
+            }
+          },
+          {
+            "id": "csat-q-2-3",
+            "text": "Hvilke kontaktkanaler har du benyttet?",
+            "methodId": "csat-multi",
+            "condition": {
+              "sourceId": "csat-q-2-1",
+              "value": "Ja"
+            }
+          }
+        ]
+      },
+      {
+        "id": "csat-topic-3",
+        "name": "Levering og kvalitet",
+        "level": 1,
+        "questions": [
+          {
+            "id": "csat-q-3-1",
+            "text": "Hvor tilfreds er du med kvaliteten af den leverede ydelse?",
+            "methodId": "csat-scale-5"
+          },
+          {
+            "id": "csat-q-3-2",
+            "text": "Blev den aftalte levering eller opgave gennemført til tiden?",
+            "methodId": "csat-yesno"
+          },
+          {
+            "id": "csat-q-3-3",
+            "text": "Hvad kunne vi have gjort bedre i forbindelse med leveringen?",
+            "methodId": "csat-text",
+            "condition": {
+              "sourceId": "csat-q-3-2",
+              "value": "Nej"
+            }
+          }
+        ]
+      },
+      {
+        "id": "csat-topic-4",
+        "name": "Fremtidigt samarbejde",
+        "level": 1,
+        "questions": [
+          {
+            "id": "csat-q-4-1",
+            "text": "Vil du overveje at benytte os igen?",
+            "methodId": "csat-yesno"
+          },
+          {
+            "id": "csat-q-4-2",
+            "text": "Hvad skal vi især forbedre for at styrke samarbejdet?",
+            "methodId": "csat-text"
+          }
+        ]
+      }
+    ]
+  },
+  "methods": [
+    {
+      "id": "csat-scale-5",
+      "type": "scale",
+      "name": "Tilfredshed 1–5",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "firstLabel": "Meget utilfreds",
+      "lastLabel": "Meget tilfreds"
+    },
+    {
+      "id": "csat-yesno",
+      "type": "yesno",
+      "name": "Ja / Nej",
+      "options": [
+        "Ja",
+        "Nej"
+      ]
+    },
+    {
+      "id": "csat-text",
+      "type": "text",
+      "name": "Fritekst",
+      "options": []
+    },
+    {
+      "id": "csat-multi",
+      "type": "multi",
+      "name": "Kontaktkanaler",
+      "options": [
+        "Telefon",
+        "E-mail",
+        "Hjemmeside",
+        "Personligt møde",
+        "Andet"
+      ],
+      "multiple": true
+    }
+  ]
+}
